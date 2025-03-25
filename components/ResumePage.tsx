@@ -1,31 +1,55 @@
+"use client"
+
 import {
     ResizableHandle,
     ResizablePanel,
     ResizablePanelGroup,
 } from "@/components/ui/resizable"
-import { InfosSideBar } from "./SideBarResume/InfosSideBar";
+import { InfosSideBar } from "./SideBarResume/Info/InfosSideBar";
 import { ResumeContent } from "./SideBarResume/ResumeContent";
 import { StructureSideBar } from "./SideBarResume/StructureSideBar";
+import { FormProvider, useForm } from "react-hook-form";
 
 
 export default function ResumePage() {
+    const defaultValues: ResumeData = {
+        content: {
+            image: {
+                url: "",
+                visible: true
+            },
+            infos: {
+                fullName: "",
+                headline: "",
+                email: "",
+                website: "",
+                phone: "",
+                location: ""
+            }
+        }
+    }
+
+    const methods = useForm<ResumeData>({ defaultValues });
+
     return (
-        <main className="w-full h-creen overflow-hidden">
-            <ResizablePanelGroup direction="horizontal" className="w-full h-full">
-                <ResizablePanel minSize={20} maxSize={40} defaultSize={30}>
-                    <InfosSideBar />
-                </ResizablePanel>
-                <ResizableHandle withHandle />
+        <FormProvider {...methods}>
+            <main className="w-full h-creen overflow-hidden">
+                <ResizablePanelGroup direction="horizontal" className="w-full h-full">
+                    <ResizablePanel minSize={20} maxSize={40} defaultSize={30}>
+                        <InfosSideBar />
+                    </ResizablePanel>
+                    <ResizableHandle withHandle />
 
-                <ResizablePanel>
-                    <ResumeContent />
-                </ResizablePanel>
-                <ResizableHandle withHandle />
+                    <ResizablePanel>
+                        <ResumeContent />
+                    </ResizablePanel>
+                    <ResizableHandle withHandle />
 
-                <ResizablePanel minSize={20} maxSize={35} defaultSize={25}>
-                    <StructureSideBar />
-                </ResizablePanel>
-            </ResizablePanelGroup>
-        </main>
+                    <ResizablePanel minSize={20} maxSize={35} defaultSize={25}>
+                        <StructureSideBar />
+                    </ResizablePanel>
+                </ResizablePanelGroup>
+            </main>
+        </FormProvider>
     );
 }
