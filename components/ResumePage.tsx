@@ -25,7 +25,28 @@ export default function ResumePage() {
                 website: "",
                 phone: "",
                 location: ""
-            }
+            },
+            summary: "",
+            certifications: [],
+            educations: [],
+            experiences: [],
+            languages: [],
+            projects: [],
+            skills: [],
+            socialMedias: [
+                {
+                    icon: "LinkedIn",
+                    url: "teste1",
+                    name: "LinkedIn",
+                    username: "teste1"
+                },
+                {
+                    icon: "Instagram",
+                    url: "teste2",
+                    name: "Instagram",
+                    username: "teste2"
+                }
+            ],
         }
     }
 

@@ -4,6 +4,7 @@ import { AiGenerationBtn } from "./AiGenerationBtn"
 import { Separator } from "../../ui/separator"
 import { BasicInfoSection } from "./BasicInfoSection"
 import { SummarySection } from "./SummarySection"
+import { MultipleSections } from "./MultipleSections"
 
 export const InfosSideBar = () => {
     return (
@@ -22,6 +23,10 @@ export const InfosSideBar = () => {
             <Separator className="my-5" />
 
             <SummarySection />
+
+            <Separator className="my-5" />
+
+            <MultipleSections />
         </aside>
     )
 }
