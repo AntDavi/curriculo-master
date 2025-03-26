@@ -3,6 +3,7 @@ import Logo from '@/public/logo.svg'
 import { AiGenerationBtn } from "./AiGenerationBtn"
 import { Separator } from "../../ui/separator"
 import { BasicInfoSection } from "./BasicInfoSection"
+import { SummarySection } from "./SummarySection"
 
 export const InfosSideBar = () => {
     return (
@@ -17,6 +18,10 @@ export const InfosSideBar = () => {
             <Separator className="my-5" />
 
             <BasicInfoSection />
+
+            <Separator className="my-5" />
+
+            <SummarySection />
         </aside>
     )
 }
