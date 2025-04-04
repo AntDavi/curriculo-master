@@ -1,7 +1,10 @@
+'use client'
+
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import { BicepsFlexed, BriefcaseBusiness, FileBadge2, Globe, GraduationCap, Languages, Share2 } from "lucide-react";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { MultipleDragItemData, MultipleDragList } from "./MultipleDragList";
+import { ManageMultipleDialog } from "./ManageMultipleDialog";
 
 export const MultipleSections = () => {
     const sectionsKeys: MultipleDragItemData[] = [
@@ -56,6 +59,8 @@ export const MultipleSections = () => {
         },
     ];
 
+    const [sectionToAdd, setSectionToAdd] = useState<MultipleDragItemData | null>(null);
+
     return (
         <div>
             {sectionsKeys.map((section) => (
@@ -63,12 +68,23 @@ export const MultipleSections = () => {
                     <Separator className="my-5" />
                     <MultipleDragList
                         data={section}
-                        onAdd={() => { }}
-                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                        onAdd={() => setSectionToAdd(section)}
                         onEdit={(index) => { }}
                     />
                 </Fragment>
             ))}
+
+            {sectionToAdd && (
+                <ManageMultipleDialog
+                    data={sectionToAdd}
+                    open={!!sectionToAdd}
+                    setOpen={(value) => {
+                        if (!value) {
+                            setSectionToAdd(null);
+                        }
+                    }}
+                />
+            )}
         </div>
     )
 }

@@ -1,7 +1,5 @@
-import { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-    /* config options here */
+const nextConfig = {
     experimental: {
         turbo: {
             rules: {
@@ -13,7 +11,15 @@ const nextConfig: NextConfig = {
         },
     },
     reactStrictMode: false,
-    devIndicators: false
+    devIndicators: false,
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "**", // Permite imagens de qualquer host externo
+            },
+        ],
+    },
 };
 
 
